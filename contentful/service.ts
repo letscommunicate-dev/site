@@ -1,7 +1,8 @@
 import { gql } from 'graphql-request';
+import { Locale } from '../defs/i18n';
 import { graphQLClient } from './api';
 
-const get = async (slug: string, locale = 'en-US') => {
+const get = async (slug: string, locale: Locale = Locale.EN_NZ) => {
     const query = gql`
         {
             serviceCollection(where: { slug: "${slug}" }, locale: "${locale}") {
@@ -22,7 +23,7 @@ const get = async (slug: string, locale = 'en-US') => {
     }
 }
 
-const getAll = async (locale = 'en-US') => {
+const getAll = async (locale: Locale = Locale.EN_NZ) => {
     const query = gql`
         {
             serviceCollection(locale: "${locale}") {

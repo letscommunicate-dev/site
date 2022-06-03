@@ -5,7 +5,7 @@ export class DictionaryEntry {
 
     constructor(en_us: string, pt_br: string) {
         this.items = new Map();
-        this.items.set(Locale.EN_US, en_us);
+        this.items.set(Locale.EN_NZ, en_us);
         this.items.set(Locale.PT_BR, pt_br);
     }
 

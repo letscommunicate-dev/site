@@ -8,17 +8,40 @@ module.exports = {
     ],
     theme: {
         colors: {
-            primary: '#d2e3c0',
-            dark: '#0b130d',
+            'black': '#000',
+            'white': '#fff',
+            'primary': '#4d97d4',
+            'primary-2': '#0e4979',
+            'primary-3': '#b0d3f2',
+            'gray-100': '#ededed',
+            'gray-200': '#e0e0e0',
+            'gray-300': '#ccc',
+            'gray-400': '#999',
+            'gray-500': '#666',
+            'gray-600': '#333',
+            'gray-700': '#1a1a1a',
+            'gray-800': '#050505',
         },
         spacing: {
-            '1': '6px',
-            '2': '12px',
+            'xs': '6px',
+            'sm': '12px',
+            'md': '24px',
+            'lg': '32px',
+            'xl': '64px'
+        },
+        fontSize: {
+            '1': '10px',
+            '2': '14px',
             '3': '18px',
             '4': '24px',
             '5': '32px',
-            '6': '48px',
-            '7': '64px'
+            '6': '52px',
+            '7': '72px',
+            '8': '100px'
+        },
+        fontFamily: {
+            'roboto': 'RobotoSlab',
+            'tenez': 'Tenez',
         },
         extend: {},
     },
