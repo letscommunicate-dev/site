@@ -1,8 +1,9 @@
 import { gql } from 'graphql-request';
 import { Locale } from '../defs/i18n';
+import Service from '../defs/service';
 import { graphQLClient } from './api';
 
-const get = async (slug: string, locale: Locale = Locale.EN_NZ) => {
+export const getService = async (slug: string, locale: Locale = Locale.EN_NZ): Promise<Service> => {
     const query = gql`
         {
             serviceCollection(where: { slug: "${slug}" }, locale: "${locale}") {
@@ -18,12 +19,12 @@ const get = async (slug: string, locale: Locale = Locale.EN_NZ) => {
     try {
         const result = await graphQLClient.request(query);
         return result.serviceCollection.items[0];
-    } catch (error) {
-        return error;
+    } catch (error: any) {
+        throw new Error(error);
     }
 }
 
-const getAll = async (locale: Locale = Locale.EN_NZ) => {
+export const getAllServices = async (locale: Locale = Locale.EN_NZ): Promise<Service[]> => {
     const query = gql`
         {
             serviceCollection(locale: "${locale}") {
@@ -39,12 +40,7 @@ const getAll = async (locale: Locale = Locale.EN_NZ) => {
     try {
         const result = await graphQLClient.request(query);
         return result.serviceCollection.items;
-    } catch (error) {
-        return error;
+    } catch (error: any) {
+        throw new Error(error);
     }
-}
-
-export default {
-    get,
-    getAll
 }

@@ -1,51 +1,27 @@
 import type { NextPage, NextPageContext } from 'next';
-import LocaleSwitch from '../components/locale-switch';
 
-import service from '../contentful/service';
+import { getPage } from '../contentful/page';
 import { Locale } from '../defs/i18n';
+import Page from '../defs/page';
 
 interface Props {
     locale: Locale,
-    services: [
-        {
-            name: 'string',
-            description: 'string',
-            slug: 'string',
-        }
-    ];
+    page: Page;
 }
 
 export const getStaticProps = async (context: NextPageContext) => {
     const locale = context.locale as Locale;
-    const services = await service.getAll(locale);
+    const page = await getPage('home', locale);
 
     return {
-        props: { services, locale },
+        props: { page, locale },
         revalidate: 10
     };
 }
 
-const Home: NextPage<Props> = ({ services, locale }) =>
+const Home: NextPage<Props> = () =>
     <>
-        <header>
-            <div>
-                <LocaleSwitch locale={locale} />
-            </div>
-        </header>
-
-        <main>
-            <h1>Welcome to Let&apos;s Communicate</h1>
-            <h4>Services</h4>
-
-            {services.map((service, i) => (
-                <div key={i}>
-                    <p className="">{service.name}</p>
-                    <p>{service.description}</p>
-                </div>
-            ))}
-        </main>
-
-        <footer>footer</footer>
+        <h1>Welcome to Let&apos;s Communicate</h1>
     </>
 
 export default Home;
