@@ -22,8 +22,10 @@ export const getPage = async (slug: string, locale: Locale = Locale.EN_NZ): Prom
         }
     `;
 
+    
     try {
         const result = await graphQLClient.request(query);
+        console.log('getPage', locale, result);
         return result.pageCollection.items[0];
     } catch (error: any) {
         throw new Error(`Page::getPage ${error}`);

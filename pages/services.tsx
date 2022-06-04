@@ -14,7 +14,7 @@ interface Props {
 
 export const getStaticProps = async (context: NextPageContext) => {
     const locale = context.locale as Locale;
-    const page = await getPage('services');
+    const page = await getPage('services', locale);
     const services = await getAllServices(locale);
 
     return {
