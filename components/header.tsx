@@ -1,23 +1,22 @@
-import Link from 'next/link';
+import Image from 'next/image';
 import { Router } from 'next/router';
-import { Locale } from '../defs/i18n';
+
 import LocaleSwitch from './locale-switch';
+import Menu from './menu';
 
 interface Props {
     router: Router,
 }
 
 const Header = ({ router }: Props) =>
-    <>
+    <header className="grid">
+        {/* <Image src="/image/logo.svg" alt="logo" layout="fill" /> */}
+
         <LocaleSwitch router={router} />
 
-        <ul>
-            <li><Link href="/"><a>HOME</a></Link></li>
-            <li><Link href="/about"><a>About</a></Link></li>
-            <li><Link href="/services"><a>SERVICES</a></Link></li>
-        </ul>
+        <Menu />
 
         <hr />
-    </>
+    </header>
 
 export default Header;

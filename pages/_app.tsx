@@ -15,8 +15,6 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
     const origin = 'document.location.origin';
     const contents = page?.contentsCollection?.items || [];
 
-    console.log({ page });
-
     return (
         <>
             <Head>

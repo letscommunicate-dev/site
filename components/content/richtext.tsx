@@ -9,13 +9,9 @@ const options: Options = {
     renderNode: {}
 };
 
-const Richtext = ({ richTextDocument }: Props) => {
-    console.log({ richTextDocument });
-    return (
-        <>
-            {documentToReactComponents(richTextDocument)}
-        </>
-    );
-}
+const Richtext = ({ richTextDocument }: Props) =>
+    <>
+        {documentToReactComponents(richTextDocument)}
+    </>
 
 export default Richtext;
