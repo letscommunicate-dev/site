@@ -13,8 +13,11 @@ const Header = ({ router }: Props) =>
 
         <ul>
             <li><Link href="/"><a>HOME</a></Link></li>
+            <li><Link href="/about"><a>About</a></Link></li>
             <li><Link href="/services"><a>SERVICES</a></Link></li>
         </ul>
+
+        <hr />
     </>
 
 export default Header;

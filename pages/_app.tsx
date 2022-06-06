@@ -4,6 +4,8 @@ import Script from 'next/script';
 
 import Footer from '../components/footer';
 import Header from '../components/header';
+import ServicesContent from '../components/content/services';
+import RichtextContent from '../components/content/richtext';
 
 import '../styles/globals.css'
 
@@ -11,6 +13,9 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
     const page = pageProps.page;
     const sitename = `Let's Communicate`;
     const origin = 'document.location.origin';
+    const contents = page?.contentsCollection?.items || [];
+
+    console.log({ page });
 
     return (
         <>
@@ -54,6 +59,16 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
 
             <main>
                 <Component {...pageProps} />
+
+                {contents.map((content: any, i: number) => {
+                    if (content.__typename === 'Services') {
+                        return (<ServicesContent items={content.serviceCollection.items} />)
+                    }
+                    
+                    if (content.__typename === 'Richtext') {
+                        return (<RichtextContent key={content.id} richTextDocument={content.content.json} />)
+                    }
+                })}
             </main>
 
             <Footer />

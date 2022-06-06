@@ -3,6 +3,7 @@ import type { NextPage, NextPageContext } from 'next';
 import { getPage } from '../contentful/page';
 import { Locale } from '../defs/i18n';
 import Page from '../defs/page';
+
 interface Props {
     locale: Locale,
     page: Page;
@@ -10,18 +11,17 @@ interface Props {
 
 export const getStaticProps = async (context: NextPageContext) => {
     const locale = context.locale as Locale;
-    const page = await getPage('services', locale);
+    const page = await getPage('about', locale);
 
     return {
-        props: { page },
+        props: { page, locale },
         revalidate: 10
     };
 }
 
-const Services: NextPage<Props> = ({ page }) => {
-    return (<>
-        <h1>{page.title}</h1>
-    </>);
-}
+const About: NextPage<Props> = () =>
+    <>
+        <h1>About</h1>
+    </>
 
-export default Services;
+export default About;

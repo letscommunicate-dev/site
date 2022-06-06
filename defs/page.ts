@@ -1,3 +1,5 @@
+import Service from "./service"
+
 export default interface Page {
     title: string,
     slug: string,
@@ -12,5 +14,13 @@ export default interface Page {
         url: string,
         width: number,
         height: number
+    },
+    contentsCollection: {
+        items: [{
+            id: string,
+            __typename: string,
+            items: [],
+            json: Object
+        }]
     }
 }

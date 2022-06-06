@@ -6,7 +6,7 @@ import { graphQLClient } from './api';
 export const getPage = async (slug: string, locale: Locale = Locale.EN_NZ): Promise<Page> => {
     const query = gql`
         {
-            pageCollection(where: { slug: "${slug}" }, locale: "${locale}") {
+            pageCollection(where: { slug: "${slug}" }, locale: "${locale}", limit: 1) {
                 items {
                     title
                     slug
@@ -16,6 +16,27 @@ export const getPage = async (slug: string, locale: Locale = Locale.EN_NZ): Prom
                         url
                         width
                         height
+                    }
+                    contentsCollection(locale: "${locale}", limit: 5) {
+                        items {
+                            ... on Services {
+                                __typename
+                                serviceCollection {
+                                    items {
+                                        name
+                                        description
+                                    }
+                                }
+                            }
+
+                            ...on Richtext {
+                                __typename
+                                id
+                                content {
+                                    json
+                                }
+                            }
+                        }
                     }
                 }
             }
