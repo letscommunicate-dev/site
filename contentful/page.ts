@@ -34,6 +34,19 @@ export const getPage = async (slug: string, locale: Locale = Locale.EN_NZ): Prom
                                 id
                                 content {
                                     json
+                                    links {
+                                        assets {
+                                            block {
+                                                sys {
+                                                    id
+                                                }
+                                                url
+                                                width
+                                                height
+                                                description
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
