@@ -1,0 +1,9 @@
+.list {
+    display: flex;
+    gap: theme('spacing.sm');
+}
+
+.listItem a {
+    text-transform: uppercase;
+    font-size: theme('fontSize.3');
+}

@@ -1,3 +1,5 @@
+@import './fonts.css';
+
 @tailwind base;
 @tailwind utilities;
 
@@ -5,7 +7,6 @@
     body {
         background-color: theme('colors.primary-2');
         color: theme('colors.gray-100');
-        font-family: theme('fontFamily.roboto');
         font-size: theme('fontSize.3');
         font-style: normal;
         font-smooth: always;

@@ -32,7 +32,7 @@ module.exports = {
         fontSize: {
             '1': '10px',
             '2': '14px',
-            '3': '18px',
+            '3': '16px',
             '4': '24px',
             '5': '32px',
             '6': '52px',
@@ -40,7 +40,7 @@ module.exports = {
             '8': '100px'
         },
         fontFamily: {
-            'roboto': 'RobotoSlab',
+            'sans': ['RobotoSlab', ...defaultTheme.fontFamily.sans],
             'tenez': 'Tenez',
         },
         extend: {},

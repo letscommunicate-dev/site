@@ -1,0 +1,18 @@
+.base {
+    max-width: 1336px;
+    width: 100vw;
+    margin: 0 auto;
+    padding: 0 theme('spacing.sm');
+}
+
+@media only screen and (min-width: 1024px) {
+    .base {
+        padding: 0 theme('spacing.md');
+    }
+}
+
+@media only screen and (min-width: 1360px) {
+    .base {
+        padding: 0;
+    }
+}

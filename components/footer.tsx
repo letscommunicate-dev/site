@@ -1,7 +1,10 @@
+import Container from "./container";
+
 const Footer = () =>
-    <footer>
-        <hr />
-        <p>Footer</p>
-    </footer>
+    <Container>
+        <footer>
+            <p>Footer</p>
+        </footer>
+    </Container>
 
 export default Footer;

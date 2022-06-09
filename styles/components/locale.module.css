@@ -1,0 +1,19 @@
+.list {
+    display: flex;
+    gap: theme('spacing.xs');
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+}
+
+.listItem:not(:last-of-type)::after {
+    content: '•';
+    margin-left: theme('spacing.xs');
+}
+
+.listItem a {
+    text-transform: uppercase;
+    font-size: theme('fontSize.2');
+}

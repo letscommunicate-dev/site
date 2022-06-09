@@ -1,22 +1,28 @@
 import Image from 'next/image';
 import { Router } from 'next/router';
+import Link from 'next/link';
 
 import LocaleSwitch from './locale-switch';
+import Container from './container';
 import Menu from './menu';
 
+import styles from '../styles/components/header.module.css';
 interface Props {
     router: Router,
 }
 
 const Header = ({ router }: Props) =>
-    <header className="grid">
-        {/* <Image src="/image/logo.svg" alt="logo" layout="fill" /> */}
+    <Container>
+        <header className={styles.base}>
+            <Link href="/">
+                <a><Image src="/image/logo.svg" alt="logo" width={140} height={100} /></a>
+            </Link>
 
-        <LocaleSwitch router={router} />
-
-        <Menu />
-
-        <hr />
-    </header>
+            <div className={styles.menu}>
+                <LocaleSwitch router={router} />
+                <Menu />
+            </div>
+        </header>
+    </Container>
 
 export default Header;

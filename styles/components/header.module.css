@@ -1,0 +1,20 @@
+.base {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding-top: theme('spacing.sm');
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: theme('spacing.sm');
+}
+
+@media only screen and (min-width: 1024px) {
+    .base {
+        padding-top: theme('spacing.md');
+    }
+}

@@ -5,8 +5,10 @@ import Script from 'next/script';
 import Footer from '../components/footer';
 import Header from '../components/header';
 import Contents from '../components/contents';
+import Container from '../components/container';
 
 import '../styles/globals.css'
+import styles from '../styles/app.module.css';
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
     const page = pageProps.page;
@@ -52,14 +54,16 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
                 }}
             />
 
-            <Header router={router} />
+            <main className={styles.main}>
+                <Header router={router} />
 
-            <main>
-                <Component {...pageProps} />
-                <Contents contents={contents} />
+                <Container>
+                    <Component {...pageProps} />
+                    <Contents contents={contents} />
+                </Container>
+
+                <Footer />
             </main>
-
-            <Footer />
         </>
     );
 }
