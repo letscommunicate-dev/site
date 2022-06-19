@@ -4,6 +4,8 @@ import { getPage } from '../contentful/page';
 import { Locale } from '../defs/i18n';
 import Page from '../defs/page';
 
+// import styles from '../styles/page.module.css';
+
 interface Props {
     locale: Locale,
     page: Page;

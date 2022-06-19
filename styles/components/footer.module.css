@@ -1,0 +1,19 @@
+.footer {
+    display: grid;
+    gap: theme('spacing.md');
+    padding-top: theme('spacing.lg');
+    padding-bottom: theme('spacing.sm');
+}
+
+.social {
+    display: grid;
+    gap: theme('spacing.sm');
+    grid-template-columns: repeat(3, 24px);
+}
+
+@media only screen and (min-width: 1024px) {
+    .footer {
+        padding-top: theme('spacing.xl');
+        padding-bottom: theme('spacing.lg');
+    }
+}

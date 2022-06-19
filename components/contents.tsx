@@ -16,7 +16,7 @@ const Contents = ({ contents }: Props) =>
             if (content.__typename === 'Richtext') {
                 return (
                     <RichtextContent
-                        key={content.id}
+                        key={content.id + i}
                         richTextDocument={content.content.json}
                         links={content.content.links}
                     />

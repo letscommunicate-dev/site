@@ -52,7 +52,7 @@ function Form({ action, fields, locale, successMessage, errorMessage }: Props) {
         >
             {fields.map((field, i: number) =>
                 <Field
-                    key={i}
+                    key={field.name + i}
                     name={field.name}
                     label={field.label}
                     placeholder={field.placeholder}

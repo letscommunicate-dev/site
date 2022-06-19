@@ -8,7 +8,7 @@ import Contents from '../components/contents';
 import Container from '../components/container';
 
 import '../styles/globals.css'
-import styles from '../styles/app.module.css';
+import styles from '../styles/page.module.css';
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
     const page = pageProps.page;
@@ -57,7 +57,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
             <main className={styles.main}>
                 <Header router={router} />
 
-                <Container>
+                <Container className={styles.body}>
                     <Component {...pageProps} />
                     <Contents contents={contents} />
                 </Container>

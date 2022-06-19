@@ -4,10 +4,11 @@ import styles from '../styles/components/container.module.css';
 
 interface Props {
     children: any,
+    className?: string,
 }
 
-const Container = ({ children }: Props) =>
-    <div className={styles.base}>
+const Container = ({ children, className = '' }: Props) =>
+    <div className={[styles.base, className].join(' ')}>
         {children}
     </div>
 

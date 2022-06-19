@@ -15,7 +15,7 @@ const LocaleSwitch = ({ router }: Props) => {
     return (<ul className={styles.list}>
         {locales.map((locale, i) => 
             <Link
-                key={i}
+                key={locale + i}
                 href={router.route}
                 locale={locale}
             >

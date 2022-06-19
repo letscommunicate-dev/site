@@ -1,0 +1,10 @@
+.richtext {
+    display: grid;
+    gap: theme('spacing.lg');
+    justify-items: center;
+    align-items: baseline;
+}
+
+.richtext p {
+    justify-self: baseline
+}

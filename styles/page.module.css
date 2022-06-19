@@ -1,0 +1,25 @@
+.main {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    height: 100vh;
+}
+
+.body {
+    display: grid;
+    gap: theme('spacing.sm');
+    padding-top: theme('spacing.lg');
+}
+
+@media only screen and (min-width: 1024px) {
+    .body {
+        gap: theme('spacing.lg');
+    }
+}
+
+.title {
+    font-size: theme('fontSize.6');
+    font-family: theme('fontFamily.tenez');
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}

@@ -17,6 +17,7 @@ export const getForm = async (id: string, locale: Locale): Promise<any> => {
                                 placeholder
                                 label
                                 type
+                                required
                             }
                         }
                     }

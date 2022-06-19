@@ -3,6 +3,8 @@ import type { NextPage, NextPageContext } from 'next';
 import { getPage } from '../contentful/page';
 import { Locale } from '../defs/i18n';
 import Page from '../defs/page';
+
+import styles from '../styles/page.module.css';
 interface Props {
     locale: Locale,
     page: Page;
@@ -20,7 +22,7 @@ export const getStaticProps = async (context: NextPageContext) => {
 
 const Jobs: NextPage<Props> = ({ page }) => {
     return (<>
-        <h1>{page.title}</h1>
+        <h1 className={styles.title}>{page.title}</h1>
     </>);
 }
 
