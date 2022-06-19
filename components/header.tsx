@@ -20,7 +20,7 @@ const Header = ({ router }: Props) =>
 
             <div className={styles.menu}>
                 <LocaleSwitch router={router} />
-                <Menu />
+                <Menu router={router} />
             </div>
         </header>
     </Container>

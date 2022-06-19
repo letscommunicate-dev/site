@@ -3,7 +3,12 @@
     gap: theme('spacing.sm');
 }
 
-.listItem a {
+.listItem {
     text-transform: uppercase;
     font-size: theme('fontSize.3');
+}
+
+.listItem.selected,
+.listItem.selected:hover {
+    color: theme('colors.primary');
 }

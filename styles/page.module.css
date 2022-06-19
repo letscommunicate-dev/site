@@ -23,3 +23,11 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
+
+.title::after {
+    display: flex;
+    content: '';
+    width: 70px;
+    height: 4px;
+    background-color: theme('colors.gray-100');
+}
