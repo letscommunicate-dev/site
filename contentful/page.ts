@@ -3,7 +3,7 @@ import { Locale } from '../defs/i18n';
 import Page from '../defs/page';
 import { graphQLClient } from './api';
 
-export const getPage = async (slug: string, locale: Locale = Locale.EN_NZ): Promise<Page> => {
+export const getPage = async (slug: string, locale: Locale): Promise<Page> => {
     const query = gql`
         {
             pageCollection(where: { slug: "${slug}" }, locale: "${locale}", limit: 1) {

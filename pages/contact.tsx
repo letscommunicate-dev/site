@@ -1,4 +1,6 @@
 import type { NextPage, NextPageContext } from 'next';
+import Form from '../components/content/form';
+import { getForm } from '../contentful/form';
 
 import { getPage } from '../contentful/page';
 import { Locale } from '../defs/i18n';
@@ -6,21 +8,30 @@ import Page from '../defs/page';
 interface Props {
     locale: Locale,
     page: Page;
+    form: any;
 }
 
 export const getStaticProps = async (context: NextPageContext) => {
     const locale = context.locale as Locale;
     const page = await getPage('contact', locale);
-
+    const form = await getForm('contact', locale);
     return {
-        props: { page },
+        props: { page, form, locale },
         revalidate: 10
     };
 }
 
-const Contact: NextPage<Props> = ({ page }) => {
+const Contact: NextPage<Props> = ({ page, form, locale }) => {
     return (<>
         <h1>{page.title}</h1>
+        <Form
+            id={form.id}
+            action="/api/contact"
+            locale={locale}
+            fields={form.fields}
+            successMessage={form.successMessage}
+            errorMessage={form.errorMessage}
+        />
     </>);
 }
 

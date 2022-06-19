@@ -3,7 +3,7 @@ import { Locale } from '../defs/i18n';
 import Service from '../defs/service';
 import { graphQLClient } from './api';
 
-export const getService = async (slug: string, locale: Locale = Locale.EN_NZ): Promise<Service> => {
+export const getService = async (slug: string, locale: Locale): Promise<Service> => {
     const query = gql`
         {
             serviceCollection(where: { slug: "${slug}" }, locale: "${locale}") {

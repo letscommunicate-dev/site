@@ -14,11 +14,14 @@ export class DictionaryEntry {
     }
 }
 
-export default (locale: Locale, key: string): String | undefined => {
+const get = (locale: Locale, key: string): String | undefined => {
     const entry = dictonary.get(key);
     return entry ? entry.get(locale) : '';
 }
 
+export default get;
+
 const dictonary = new Map<String, DictionaryEntry>();
 dictonary.set('about', new DictionaryEntry('About', 'Sobre'));
 dictonary.set('locale', new DictionaryEntry('Locale', 'Localização'));
+dictonary.set('send', new DictionaryEntry('Send', 'Enviar'));

@@ -1,0 +1,5 @@
+.base {
+    display: grid;
+    gap: theme('spacing.sm');
+}
+
