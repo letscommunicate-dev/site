@@ -16,6 +16,8 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
     const origin = 'document.location.origin';
     const contents = page?.contentsCollection?.items || [];
 
+    console.log({ page });
+
     return (
         <>
             <Head>
@@ -59,7 +61,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
 
                 <Container className={styles.body}>
                     <Component {...pageProps} />
-                    <Contents contents={contents} />
+                    <Contents contents={contents} locale={router.locale} />
                 </Container>
 
                 <Footer />

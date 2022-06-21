@@ -49,6 +49,25 @@ export const getPage = async (slug: string, locale: Locale): Promise<Page> => {
                                     }
                                 }
                             }
+
+                            ...on Form {
+                                __typename
+                                id
+                                action
+                                successMessage
+                                errorMessage
+                                fieldCollection {
+                                    items {
+                                        __typename
+                                        ...on Field {
+                                            label
+                                            name
+                                            type
+                                            placeholder
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
