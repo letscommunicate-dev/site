@@ -6,7 +6,7 @@ const nextConfig = {
     defaultLocale: 'en-NZ',
   },
   images: {
-    domains: ['images.ctfassets.net'],
+    domains: ['images.ctfassets.net', 'localhost:3000'],
   },
 }
 

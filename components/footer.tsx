@@ -11,11 +11,6 @@ const Footer = () =>
                 <a><Image src="/image/logo.svg" alt="logo" width={98} height={70} /></a>
             </Link>
 
-             <div className="contact">
-                <p>P. <a href="tel:+64273563474">+64 27 356 3474</a></p>
-                <p>M. <a href="mailto:leticia@letscommunicate.nz">leticia@letscommunicate.nz</a></p>
-            </div>
-
             <div className={styles.social}>
                 <a className="flex" href="https://www.instagram.com/letscommunicate.nz" target="_blank" rel="noopener noreferrer">
                     <Image src="/image/icon-instagram.svg" alt="instagram" width={24} height={24} />
@@ -28,6 +23,11 @@ const Footer = () =>
                 <a className="flex" href="https://api.whatsapp.com/send/?phone=64273563474&text=Hi%20there!&app_absent=0" target="_blank" rel="noopener noreferrer">
                     <Image src="/image/icon-whatsapp.svg" alt="whatsapp" width={24} height={24} />
                 </a>
+            </div>
+
+            <div className="contact">
+                <p>P. <a href="tel:+64273563474">+64 27 356 3474</a></p>
+                <p>M. <a href="mailto:leticia@letscommunicate.nz">leticia@letscommunicate.nz</a></p>
             </div>
 
             <p className="copyright">© Let’s Communicate. All Right Reserved 2022</p>

@@ -1,10 +1,9 @@
 import type { NextPage, NextPageContext } from 'next';
+import Intro from '../components/intro';
 
 import { getPage } from '../contentful/page';
 import { Locale } from '../defs/i18n';
 import Page from '../defs/page';
-
-// import styles from '../styles/page.module.css';
 
 interface Props {
     locale: Locale,
@@ -21,9 +20,9 @@ export const getStaticProps = async (context: NextPageContext) => {
     };
 }
 
-const Home: NextPage<Props> = () =>
-    <>
-        <h1>Welcome to Let&apos;s Communicate</h1>
-    </>
+const Home: NextPage<Props> = ({ locale }) =>
+    <div>
+        <Intro locale={locale} />
+    </div>
 
 export default Home;

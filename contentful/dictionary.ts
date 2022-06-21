@@ -25,3 +25,5 @@ const dictonary = new Map<String, DictionaryEntry>();
 dictonary.set('about', new DictionaryEntry('About', 'Sobre'));
 dictonary.set('locale', new DictionaryEntry('Locale', 'Localização'));
 dictonary.set('send', new DictionaryEntry('Send', 'Enviar'));
+dictonary.set('communication', new DictionaryEntry('Communication', 'Comunicação'));
+dictonary.set('iseverything', new DictionaryEntry('is everything', 'é tudo'));
