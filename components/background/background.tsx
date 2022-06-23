@@ -9,7 +9,9 @@ const Backgorund = () => {
 
     useEffect(() => {
         const parent = myRef.current as HTMLElement;
-        new p5(sketch, parent);
+        const p = new p5(sketch, parent);
+
+        return () => p.remove();
     });
 
     return (
