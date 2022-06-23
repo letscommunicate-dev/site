@@ -22,7 +22,7 @@ function Form({ action, fields, locale, successMessage, errorMessage }: Props) {
         const formData = new FormData(form);
         const body = JSON.stringify(Object.fromEntries(formData));
         
-        const response = await window.fetch(
+        const response = await fetch(
             form.action,
             {
                 method: form.method,

@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head'
 import Script from 'next/script';
+import dynamic from 'next/dynamic'
 
 import Footer from '../components/footer';
 import Header from '../components/header';
@@ -10,13 +11,13 @@ import Container from '../components/container';
 import '../styles/globals.css'
 import styles from '../styles/page.module.css';
 
+const Backgorund = dynamic(() => import('../components/background/background'), { ssr: false });
+
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
     const page = pageProps.page;
     const sitename = `Let's Communicate`;
     const origin = 'document.location.origin';
     const contents = page?.contentsCollection?.items || [];
-
-    console.log({ page });
 
     return (
         <>
@@ -56,12 +57,14 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
                 }}
             />
 
+            <Backgorund />
+
             <main className={styles.main}>
                 <Header router={router} />
 
                 <Container className={styles.body}>
                     <Component {...pageProps} />
-                    <Contents contents={contents} locale={router.locale} />
+                    <Contents contents={contents} router={router} />
                 </Container>
 
                 <Footer />
