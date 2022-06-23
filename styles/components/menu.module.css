@@ -6,9 +6,9 @@
 .listItem {
     text-transform: uppercase;
     font-size: theme('fontSize.3');
+    transition: 0.15s color ease-out;
 }
 
-.listItem.selected,
-.listItem.selected:hover {
+.selected {
     color: theme('colors.primary');
 }

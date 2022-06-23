@@ -20,7 +20,7 @@ const LocaleSwitch = ({ router }: Props) => {
                 locale={locale}
             >
                 <li className={styles.listItem}>
-                    <a className={locale === router.locale ? 'font-bold' : ''}>{locale.substring(0,2)}</a>
+                    <a className={locale === router.locale ? 'selected' : ''}>{locale.substring(0,2)}</a>
                 </li>
             </Link>
         )}

@@ -22,7 +22,7 @@ const Menu = ({ router }: Props) => {
              {pages.map((page, i) => 
                 <li key={`page-${i}`}>
                     <Link href={`/${page}`}>
-                        <a className={[pathname === `/${page}` ? 'text-primary' : '', styles.listItem].join(' ')}>
+                        <a className={[pathname === `/${page}` ? 'selected' : '', styles.listItem].join(' ')}>
                             {page}
                         </a>
                     </Link>

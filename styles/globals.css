@@ -14,4 +14,9 @@
         text-rendering: optimizeLegibility;
         letter-spacing: 0.05em;
     }
+
+    a:hover,
+    a.selected {
+        color: theme('colors.primary');
+    }
 }

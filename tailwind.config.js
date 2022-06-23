@@ -30,14 +30,14 @@ module.exports = {
             'xl': '64px'
         },
         fontSize: {
-            '1': '10px',
-            '2': '14px',
-            '3': '16px',
-            '4': '24px',
-            '5': '32px',
-            '6': '52px',
-            '7': '72px',
-            '8': '100px'
+            '1': '0.625rem', // 10px
+            '2': '0.875rem', // 14px
+            '3': '1rem', // 16px
+            '4': '1.5rem', // 24px
+            '5': '2rem', // 32px
+            '6': '3.25rem', // 52px
+            '7': '4.5rem', // 72px
+            '8': '6.25rem'  // 100px
         },
         fontFamily: {
             'sans': ['RobotoSlab', ...defaultTheme.fontFamily.sans],

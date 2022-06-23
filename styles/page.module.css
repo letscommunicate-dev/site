@@ -6,6 +6,7 @@
 }
 
 .body {
+    align-content: flex-start;
     display: grid;
     gap: theme('spacing.sm');
     padding-top: theme('spacing.lg');
