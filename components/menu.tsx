@@ -1,29 +1,25 @@
 import Link from 'next/link';
 import { Router } from 'next/router';
+import Page from '../defs/page';
 
 import styles from '../styles/components/menu.module.css';
 
 interface Props {
     router: Router,
+    pages: Page[],
 }
 
-const Menu = ({ router }: Props) => {
+const Menu = ({ router, pages }: Props) => {
     const pathname = router.pathname;
-    const pages = [
-        'about',
-        'brand',
-        'jobs',
-        'services',
-        'contact',
-    ];
+    const pagesFiltered = pages.filter(a => a.slug !== 'home');
 
     return (
         <ul className={styles.list}>
-             {pages.map((page, i) => 
+             {pagesFiltered.map((page, i) => 
                 <li key={`page-${i}`}>
-                    <Link href={`/${page}`}>
-                        <a className={[pathname === `/${page}` ? 'selected' : '', styles.listItem].join(' ')}>
-                            {page}
+                    <Link href={`/${page.slug}`}>
+                        <a className={[pathname === `/${page.slug}` ? 'selected' : '', styles.listItem].join(' ')}>
+                            {page.title}
                         </a>
                     </Link>
                 </li>

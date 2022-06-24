@@ -1,4 +1,4 @@
-import { AppProps } from 'next/app';
+import { AppInitialProps, AppProps } from 'next/app';
 import Head from 'next/head'
 import Script from 'next/script';
 import dynamic from 'next/dynamic'
@@ -10,10 +10,24 @@ import Container from '../components/container';
 
 import '../styles/globals.css'
 import styles from '../styles/page.module.css';
+import { NextPageContext } from 'next';
+import { getAllPages } from '../contentful/page';
+import { Locale } from '../defs/i18n';
+import Page from '../defs/page';
 
 const Backgorund = dynamic(() => import('../components/background/background'), { ssr: false });
 
-const MyApp = ({ Component, pageProps, router }: AppProps) => {
+App.getInitialProps = async (appContext: AppProps) => {
+    const locale = appContext.router.locale as Locale;
+    const pages = await getAllPages(true, locale);
+    return { pages };
+}
+
+interface Props extends AppProps {
+    pages: Page[];
+}
+
+function App({ Component, pageProps, router, pages }: Props) {
     const page = pageProps.page;
     const sitename = `Let's Communicate`;
     const origin = 'document.location.origin';
@@ -60,7 +74,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
             <Backgorund />
 
             <main className={styles.main}>
-                <Header router={router} />
+                <Header router={router} pages={pages} />
 
                 <Container className={styles.body}>
                     <Component {...pageProps} />
@@ -72,5 +86,5 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
         </>
     );
 }
-export default MyApp;
+export default App;
     

@@ -45,7 +45,7 @@ function Form({ action, fields, locale, successMessage, errorMessage }: Props) {
 
     return (
         <form
-            className={styles.base}
+            className={styles.form}
             action={action}
             method="post"
             onSubmit={onSubmit as any}

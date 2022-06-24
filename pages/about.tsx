@@ -21,9 +21,9 @@ export const getStaticProps = async (context: NextPageContext) => {
     };
 }
 
-const About: NextPage<Props> = () =>
+const About: NextPage<Props> = ({page}) =>
     <>
-        <h1 className={styles.title}>About</h1>
+        <h1 className={styles.title}>{page.title}</h1>
     </>
 
 export default About;

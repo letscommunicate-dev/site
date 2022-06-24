@@ -1,9 +1,9 @@
-.base {
+.form {
     display: grid;
     gap: theme('spacing.lg');
 }
 
-.base [type="submit"] {
+.form [type="submit"] {
     cursor: pointer;
     border: 2px solid theme('colors.gray-100');
     outline: none;
@@ -19,7 +19,14 @@
     justify-self: flex-end;
 }
 
-.base [type="submit"]:hover {
+.form [type="submit"]:hover {
     background:  theme('colors.gray-100');
     color:  theme('colors.gray-700');
+}
+
+@media only screen and (min-width: 1024px) {
+    .form {
+        width: 1024px;
+        justify-self: center;
+    }
 }

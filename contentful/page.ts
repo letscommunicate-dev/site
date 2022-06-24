@@ -1,78 +1,38 @@
 import { gql } from 'graphql-request';
+
 import { Locale } from '../defs/i18n';
 import Page from '../defs/page';
 import { graphQLClient } from './api';
+import {
+    fieldFragment,
+    formFragment,
+    pageFragment,
+    richtextFragment,
+    servicesFragment
+} from './fragments';
 
 export const getPage = async (slug: string, locale: Locale): Promise<Page> => {
     const query = gql`
-        {
+        query {
             pageCollection(where: { slug: "${slug}" }, locale: "${locale}", limit: 1) {
                 items {
-                    title
-                    slug
-                    description
-                    keywords
-                    image {
-                        url
-                        width
-                        height
-                    }
+                    ...${pageFragment.id}
                     contentsCollection(locale: "${locale}", limit: 5) {
                         items {
-                            ... on Services {
-                                __typename
-                                serviceCollection {
-                                    items {
-                                        name
-                                        description
-                                    }
-                                }
-                            }
-
-                            ...on Richtext {
-                                __typename
-                                id
-                                content {
-                                    json
-                                    links {
-                                        assets {
-                                            block {
-                                                sys {
-                                                    id
-                                                }
-                                                url
-                                                width
-                                                height
-                                                description
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            ...on Form {
-                                __typename
-                                id
-                                action
-                                successMessage
-                                errorMessage
-                                fieldCollection {
-                                    items {
-                                        __typename
-                                        ...on Field {
-                                            label
-                                            name
-                                            type
-                                            placeholder
-                                        }
-                                    }
-                                }
-                            }
+                            ...${servicesFragment.id}
+                            ...${richtextFragment.id}
+                            ...${formFragment.id}
                         }
                     }
                 }
             }
         }
+
+        ${pageFragment.fragment}
+        ${servicesFragment.fragment}
+        ${richtextFragment.fragment}
+        ${formFragment.fragment}
+        ${fieldFragment.fragment}
     `;
 
     try {
@@ -83,23 +43,17 @@ export const getPage = async (slug: string, locale: Locale): Promise<Page> => {
     }
 }
 
-export const getAllPages = async (locale: Locale = Locale.EN_NZ): Promise<Page[]> => {
+export const getAllPages = async (displayAtMenu: boolean, locale: Locale = Locale.EN_NZ): Promise<Page[]> => {
     const query = gql`
-        {
-            pageCollection(locale: "${locale}") {
+        query {
+            pageCollection(where: { displatAtMenu: ${displayAtMenu} }, order: order_ASC, locale: "${locale}") {
                 items {
-                    title
-                    slug
-                    description
-                    keywords
-                    image {
-                        url
-                        width
-                        height
-                    }
+                    ...${pageFragment.id}
                 }
             }
         }
+
+        ${pageFragment.fragment}
     `;
 
     try {
