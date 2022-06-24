@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Router } from 'next/router';
 import Link from 'next/link';
@@ -8,7 +9,6 @@ import Menu from './menu';
 import Page from '../defs/page';
 
 import styles from '../styles/components/header.module.css';
-import { useState } from 'react';
 interface Props {
     router: Router,
     pages: Page[],
@@ -21,9 +21,12 @@ const Header = ({ router, pages }: Props) => {
         setOpen(!open);
     }
 
-    Router.events.on('routeChangeComplete', () => {
-        setOpen(false);
-    });
+    const handleRouteChange = () => setOpen(false);
+
+    useEffect(() => {
+        router.events.on('routeChangeComplete', handleRouteChange);
+        return () => router.events.off('routeChangeComplete', handleRouteChange);
+    }, [router.events]);
 
     return (
          <Container>
