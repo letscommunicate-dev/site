@@ -14,6 +14,8 @@ export const getStaticProps = async (context: NextPageContext) => {
     const locale = context.locale as Locale;
     const page = await getPage('home', locale);
 
+    console.log('index', { context })
+
     return {
         props: { page, locale },
         revalidate: 10

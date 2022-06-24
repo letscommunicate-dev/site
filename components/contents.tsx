@@ -14,7 +14,11 @@ const Contents = ({ contents, router }: Props) =>
     <>
         {contents.map((content: any, i: number) => {
             if (content.__typename === 'Services') {
-                return (<ServicesContent items={content.serviceCollection.items} />)
+                return (
+                    <ServicesContent
+                        key={content.id + i}
+                        items={content.serviceCollection.items}
+                    />)
             }
             
             if (content.__typename === 'Richtext') {
