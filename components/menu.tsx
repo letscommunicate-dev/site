@@ -15,7 +15,7 @@ const Menu = ({ router, pages }: Props) => {
 
     return (
         <ul className={styles.list}>
-             {pagesFiltered.map((page, i) => 
+            {pagesFiltered.map((page, i) => 
                 <li key={`page-${i}`}>
                     <Link href={`/${page.slug}`}>
                         <a className={[pathname === `/${page.slug}` ? 'selected' : '', styles.listItem].join(' ')}>

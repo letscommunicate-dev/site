@@ -19,3 +19,24 @@
     text-transform: uppercase;
     font-size: theme('fontSize.3');
 }
+
+@media only screen and (max-width: 1023px) {
+    .listItem a {
+        font-size: theme('fontSize.4');
+    }
+
+    .list {
+        position: relative;
+    }
+
+    .list::before {
+        content: '';
+        position: absolute;
+        top: calc(theme('spacing.lg') * -0.5);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+        height: 2px;
+        background-color: theme('colors.white');
+    }
+}
