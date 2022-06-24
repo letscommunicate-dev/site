@@ -30,7 +30,7 @@ const Footer = () =>
                 <p>M. <a href="mailto:leticia@letscommunicate.nz">leticia@letscommunicate.nz</a></p>
             </div>
 
-            <p className="copyright">© Let’s Communicate. All Right Reserved 2022</p>
+            <p className="copyright">© Let’s Communicate. All rights reserved 2022</p>
         </footer>
     </Container>
 
