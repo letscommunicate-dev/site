@@ -43,17 +43,35 @@ export const getPage = async (slug: string, locale: Locale): Promise<Page> => {
     }
 }
 
-export const getAllPages = async (displayAtMenu: boolean, locale: Locale = Locale.EN_NZ): Promise<Page[]> => {
+export const getAllPages = async (locale: Locale = Locale.EN_NZ): Promise<Page[]> => {
+    const query = gql`
+        query {
+            pageCollection {
+                items {
+                    slug
+                    title
+                }
+            }
+        }
+    `;
+
+    try {
+        const result = await graphQLClient.request(query);
+        return result.pageCollection.items;
+    } catch (error: any) {
+        throw new Error(`Page::getAllPages ${error}`);
+    }
+}
+export const getPagesForMenu = async (displayAtMenu: boolean, locale: Locale = Locale.EN_NZ): Promise<Page[]> => {
     const query = gql`
         query {
             pageCollection(where: { displatAtMenu: ${displayAtMenu} }, order: order_ASC, locale: "${locale}") {
                 items {
-                    ...${pageFragment.id}
+                    slug
+                    title
                 }
             }
         }
-
-        ${pageFragment.fragment}
     `;
 
     try {

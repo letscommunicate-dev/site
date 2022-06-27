@@ -1,38 +1,26 @@
-import { AppInitialProps, AppProps } from 'next/app';
+import {  AppProps } from 'next/app';
 import Head from 'next/head'
 import Script from 'next/script';
-import dynamic from 'next/dynamic'
 
-import Footer from '../components/footer';
-import Header from '../components/header';
-import Contents from '../components/contents';
-import Container from '../components/container';
-
-import '../styles/globals.css'
-import styles from '../styles/page.module.css';
-import { NextPageContext } from 'next';
-import { getAllPages } from '../contentful/page';
+import { AppProvider } from '../components/AppProvider';
 import { Locale } from '../defs/i18n';
+
 import Page from '../defs/page';
 
-const Backgorund = dynamic(() => import('../components/background/background'), { ssr: false });
-
-App.getInitialProps = async (appContext: AppProps) => {
-    const locale = appContext.router.locale as Locale;
-    const pages = await getAllPages(true, locale);
-    return { pages };
-}
-
+import '../styles/globals.css'
 interface Props extends AppProps {
     pages: Page[];
 }
 
-function App({ Component, pageProps, router, pages }: Props) {
-    const page = pageProps.page;
+function App({ Component, pageProps, router }: Props) {
+    const page = pageProps?.page;
     const sitename = `Let's Communicate`;
-    const origin = 'document.location.origin';
-    const contents = page?.contentsCollection?.items || [];
-
+    const origin = router.basePath;
+    const sharedState = {
+        router,
+        locale: router.locale as Locale
+    };
+    
     return (
         <>
             <Head>
@@ -71,18 +59,9 @@ function App({ Component, pageProps, router, pages }: Props) {
                 }}
             />
 
-            <Backgorund />
-
-            <main className={styles.main}>
-                <Header router={router} pages={pages} />
-
-                <Container className={styles.body}>
-                    <Component {...pageProps} />
-                    <Contents contents={contents} router={router} />
-                </Container>
-
-                <Footer />
-            </main>
+            <AppProvider value={sharedState}>
+                <Component {...pageProps} />
+            </AppProvider>
         </>
     );
 }

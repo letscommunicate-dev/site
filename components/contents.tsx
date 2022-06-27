@@ -1,4 +1,3 @@
-import { Router } from "next/router";
 import { Locale } from "../defs/i18n";
 import Form from "./content/form";
 import RichtextContent from "./content/richtext";
@@ -6,11 +5,11 @@ import ServicesContent from "./content/services";
 
 
 interface Props {
-    contents: [],
-    router: Router
+    contents: any[],
+    locale: Locale
 }
 
-const Contents = ({ contents, router }: Props) =>
+const Contents = ({ contents, locale }: Props) =>
     <>
         {contents.map((content: any, i: number) => {
             if (content.__typename === 'Services') {
@@ -37,7 +36,7 @@ const Contents = ({ contents, router }: Props) =>
                         id={content.id}
                         key={content.id + i}
                         action={content.action}
-                        locale={router.locale as Locale}
+                        locale={locale as Locale}
                         fields={content.fieldCollection.items}
                         successMessage={content.successMessage}
                         errorMessage={content.errorMessage}
