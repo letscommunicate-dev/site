@@ -15,7 +15,7 @@ interface Props extends AppProps {
 function App({ Component, pageProps, router }: Props) {
     const page = pageProps?.page;
     const sitename = `Let's Communicate`;
-    const origin = 'https://www.letscommunicate.nz';
+    const origin = `https://www.letscommunicate.nz/${router.locale === Locale.PT_BR ? router.locale : ''}`;
     const sharedState = {
         router,
         locale: router.locale as Locale
