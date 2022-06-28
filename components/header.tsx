@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import Link from 'next/link';
 
 import LocaleSwitch from './locale-switch';
@@ -9,13 +9,12 @@ import Menu from './menu';
 import Page from '../defs/page';
 
 import styles from '../styles/components/header.module.css';
-interface Props {
-    router: Router,
-    pages: Page[],
-}
+import { useAppContext } from './AppProvider';
 
-const Header = ({ router, pages }: Props) => {
+const Header = () => {
     const [open, setOpen] = useState(false);
+    const router = useRouter();
+    const { pages } = useAppContext();
 
     const onClick = () => {
         setOpen(!open);
@@ -42,8 +41,8 @@ const Header = ({ router, pages }: Props) => {
                 </div>
 
                 <nav className={styles.menu}>
-                    <LocaleSwitch router={router} />
-                    <Menu router={router} pages={pages} />
+                    <LocaleSwitch />
+                    <Menu />
                 </nav>
             </header>
         </Container>

@@ -2,16 +2,14 @@ import type { NextPage, NextPageContext } from 'next';
 import Link from 'next/link'
 
 import { Locale } from '../defs/i18n';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 
 import styles from '../styles/components/locale.module.css';
 
-interface Props {
-    router: Router,
-}
-
-const LocaleSwitch = ({ router }: Props) => {
+const LocaleSwitch = () => {
+    const router = useRouter();
     const locales = router.locales || [];
+
     return (<ul className={styles.list}>
         {locales.map((locale, i) => 
             <Link

@@ -1,24 +1,32 @@
-import {  AppProps } from 'next/app';
+import { NextPage, NextPageContext } from 'next';
+import { AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 import Head from 'next/head'
 import Script from 'next/script';
 
 import { AppProvider } from '../components/AppProvider';
+import Footer from '../components/footer';
+import Header from '../components/header';
+import { getPagesForMenu } from '../contentful/page';
 import { Locale } from '../defs/i18n';
 
 import Page from '../defs/page';
 
 import '../styles/globals.css'
+import styles from '../styles/page.module.css';
+
+const Backgorund = dynamic(() => import('../components/background/background'), { ssr: false });
 interface Props extends AppProps {
     pages: Page[];
+    host: string;
 }
 
-function App({ Component, pageProps, router }: Props) {
+const App: NextPage<Props, {}> = ({ Component, pageProps, router, pages, host }) => {
     const page = pageProps?.page;
     const sitename = `Let's Communicate`;
-    const origin = `https://www.letscommunicate.nz/${router.locale === Locale.PT_BR ? router.locale : ''}`;
+    const origin = `https://${host}/${router.locale === Locale.PT_BR ? router.locale : ''}`;
     const sharedState = {
-        router,
-        locale: router.locale as Locale
+        pages,
     };
 
     return (
@@ -59,11 +67,27 @@ function App({ Component, pageProps, router }: Props) {
                 }}
             />
 
+            <Backgorund />
+
             <AppProvider value={sharedState}>
-                <Component {...pageProps} />
+                <div className={styles.page}>
+                    <Header />
+                    <Component {...pageProps} />
+                    <Footer />
+                </div>
             </AppProvider>
         </>
     );
 }
+
+App.getInitialProps = async ({ req, locale }: NextPageContext) => {
+    const host = req?.headers.host;
+    const pages = await getPagesForMenu(true, locale as Locale);
+
+    return {
+        pages,
+        host
+    }
+}
+
 export default App;
-    

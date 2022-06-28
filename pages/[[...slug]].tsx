@@ -1,24 +1,18 @@
 import { GetStaticPathsContext, GetStaticPropsContext, NextPage } from 'next';
-import dynamic from 'next/dynamic';
 
-import { getAllPages, getPage, getPagesForMenu } from '../contentful/page';
+import { getAllPages, getPage } from '../contentful/page';
 import { Locale } from '../defs/i18n';
 import Page from '../defs/page';
-import { useAppContext } from '../components/AppProvider';
-import Container from '../components/container';
 import Contents from '../components/contents';
-import Footer from '../components/footer';
-import Header from '../components/header';
 import Intro from '../components/intro';
 
 import styles from '../styles/page.module.css';
+import Container from '../components/container';
+import { useRouter } from 'next/router';
 
-const Backgorund = dynamic(() => import('../components/background/background'), { ssr: false });
 
 interface Props {
-    locale: Locale,
     page: Page;
-    pages: Page[];
 }
 
 export const getStaticPaths = async (params: GetStaticPathsContext) => {
@@ -34,35 +28,27 @@ export const getStaticPaths = async (params: GetStaticPathsContext) => {
 export const getStaticProps = async ({ params, locale }: GetStaticPropsContext) => {
     const slug = params?.slug as string || 'home';
     const page = await getPage(slug, locale as Locale);
-    const pages = await getPagesForMenu(true, locale as Locale);
 
     return {
-        props: { pages, page },
+        props: { page },
         revalidate: 10
     };
 }
 
-const BasicPage: NextPage<Props> = ({ pages, page }) => {
+const BasicPage: NextPage<Props> = ({ page }) => {
     const contents = page?.contentsCollection?.items || [];
-    const { router, locale } = useAppContext();
+    const router = useRouter();
+    const locale = router.locale as Locale;
 
     return (
-        <div className={styles.page}>
-            <Backgorund />
+        <Container>
+            <main className={styles.body}>
+                {page.slug === 'home' && <Intro locale={locale} />}
+                {page.slug !== 'home' && <h1 className={styles.title}>{page.title}</h1>}
 
-            <Header router={router} pages={pages} />
-
-            <Container>
-                <main className={styles.body}>
-                    {page.slug === 'home' && <Intro locale={locale} />}
-                    {page.slug !== 'home' && <h1 className={styles.title}>{page.title}</h1>}
-
-                    <Contents contents={contents} locale={locale} />
-                </main>
-            </Container>
-
-            <Footer />
-        </div>
+                <Contents contents={contents} />
+            </main>
+        </Container>
     );
 }
 

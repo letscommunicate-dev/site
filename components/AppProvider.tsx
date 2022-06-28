@@ -1,6 +1,11 @@
 import { createContext, useContext } from 'react'
+import Page from '../defs/page';
 
-const AppContext = createContext({});
+export interface IAppContext {
+    pages?: Page[],
+}
+
+const AppContext = createContext<IAppContext>({});
 
 export function AppProvider(props: any) {
     const {value, children} = props
@@ -12,6 +17,6 @@ export function AppProvider(props: any) {
     );
 }
 
-export function useAppContext(): any {
-    return useContext(AppContext);
+export function useAppContext(): IAppContext {
+    return useContext<IAppContext>(AppContext);
 }

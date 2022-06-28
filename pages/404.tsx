@@ -1,12 +1,15 @@
 import type { NextPage } from 'next';
+import Container from '../components/container';
 
 import styles from '../styles/page.module.css';
 
-const Jobs: NextPage = () => {
-    return (<>
-        <h1 className={styles.title}>404</h1>
-        <p className="text-4">Page not found</p>
-    </>);
+const NotFound: NextPage = () => {
+    return (
+        <Container>
+            <h1 className={styles.title}>404</h1>
+            <p className="text-4">Page not found</p>
+        </Container>
+    );
 }
 
-export default Jobs;
+export default NotFound;
