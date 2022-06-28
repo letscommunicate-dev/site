@@ -81,7 +81,7 @@ const App: NextPage<Props, {}> = ({ Component, pageProps, router, pages, host })
 }
 
 App.getInitialProps = async ({ req, locale }: NextPageContext) => {
-    const host = req?.headers.host;
+    const host = req?.headers?.host || 'https://www.letscommunicate.nz';
     const pages = await getPagesForMenu(true, locale as Locale);
 
     return {
