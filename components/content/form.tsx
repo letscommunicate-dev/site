@@ -1,5 +1,5 @@
+import { Formik, Field, Form as FormikForm, FormikHelpers } from "formik";
 import FieldType from "../../defs/field";
-import Field from "./field";
 import dictionary from "../../contentful/dictionary";
 import { Locale } from "../../defs/i18n";
 
@@ -9,23 +9,23 @@ interface Props {
     fields: Array<FieldType>,
     locale: Locale,
     action: string,
+    method: 'post'|'get',
     id: string,
     successMessage: string,
     errorMessage: string,
 }
 
-function Form({ action, fields, locale, successMessage, errorMessage }: Props) {
-    async function onSubmit(event: Event): Promise<void> {
-        event.preventDefault();
+function Form({ action, method, fields, locale, successMessage, errorMessage }: Props) {
+    const initialState: any = {};
+    fields.forEach(field => initialState[field.name] = '');
 
-        const form = event.target as HTMLFormElement;
-        const formData = new FormData(form);
-        const body = JSON.stringify(Object.fromEntries(formData));
+    async function onSubmit(values: any, { resetForm }: FormikHelpers<any>) {
+        const body = JSON.stringify(values);
         
         const response = await fetch(
-            form.action,
+            action,
             {
-                method: form.method,
+                method,
                 body,
                 headers: {
                     'Content-Type':'application/json'
@@ -33,10 +33,9 @@ function Form({ action, fields, locale, successMessage, errorMessage }: Props) {
             }
         );
         const data = await response.json();
-        console.log('response', data);
         
         if (data.success) {
-            form.reset();
+            resetForm();
             window.alert(successMessage);
         } else {
             window.alert(errorMessage);
@@ -44,25 +43,29 @@ function Form({ action, fields, locale, successMessage, errorMessage }: Props) {
     }
 
     return (
-        <form
-            className={styles.form}
-            action={action}
+        <Formik
             method="post"
-            onSubmit={onSubmit as any}
+            initialValues={initialState}
+            onSubmit={onSubmit}
         >
-            {fields.map((field, i: number) =>
-                <Field
-                    key={field.name + i}
-                    name={field.name}
-                    label={field.label}
-                    placeholder={field.placeholder}
-                    type={field.type}
-                    required={field.required}
-                />
-            )}
+            <FormikForm className={styles.form}>
+                {fields.map((field, i: number) =>
+                    <fieldset className={styles.fieldset} key={field.name + i}>
+                        {field.label && <label htmlFor={field.name}>{field.label}</label>}
 
-            <button type="submit">{dictionary(locale, 'send')}</button>
-        </form>
+                        <Field
+                            name={field.name}
+                            placeholder={field.placeholder}
+                            as={field.as}
+                            type={field.type}
+                            required={field.required}
+                        />
+                    </fieldset>
+                )}
+
+                <button type="submit">{dictionary(locale, 'send')}</button>
+            </FormikForm>
+        </Formik>
     );
 }
 

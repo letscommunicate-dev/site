@@ -39,6 +39,7 @@ const Contents = ({ contents }: Props) => {
                             id={content.id}
                             key={content.id + i}
                             action={content.action}
+                            method={content.method}
                             locale={locale as Locale}
                             fields={content.fieldCollection.items}
                             successMessage={content.successMessage}

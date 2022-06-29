@@ -65,6 +65,7 @@ export const fieldFragment = {
             label
             name
             type
+            as
             placeholder
         }
     `
@@ -77,6 +78,7 @@ export const formFragment = {
             __typename
             id
             action
+            method
             successMessage
             errorMessage
             fieldCollection {

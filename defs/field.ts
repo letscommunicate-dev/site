@@ -1,8 +1,15 @@
+import { FieldProps } from "formik";
+
 export enum FieldType {
     TEXT = 'text',
-    TEXT_AREA = 'textarea',
     EMAIL = 'email',
     NUMBER = 'number',
+}
+
+export enum FieldAs {
+    INPUT = 'text',
+    SELECT = 'select',
+    TEXTAREA = 'textarea',
 }
 
 export default interface Field {
@@ -10,5 +17,6 @@ export default interface Field {
     placeholder: string | null,
     label: string | null,
     type: FieldType,
+    as: FieldAs,
     required: boolean,
 }

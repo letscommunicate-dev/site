@@ -30,3 +30,37 @@
         align-self: center;
     }
 }
+
+.fieldset {
+    display: grid;
+    gap: theme('spacing.xs');
+    padding: 0;
+}
+
+.fieldset label {
+    letter-spacing: 0.1em;
+}
+
+.fieldset textarea {
+    height: 4em;
+    resize: none;
+}
+
+.fieldset textarea,
+.fieldset input {
+    color: theme('colors.gray-100');
+    background: none;
+    border: none;
+    outline: 2px solid theme('colors.gray-100');
+    font-size: theme('fontSize.3');
+    line-height: 1.25;
+    min-height: 24px;
+    padding: theme('spacing.sm');
+    border-radius: 10px;
+    letter-spacing: 0.05em;
+}
+
+.fieldset input::placeholder,
+.fieldset textarea::placeholder {
+    color: theme('colors.gray-100');
+}
