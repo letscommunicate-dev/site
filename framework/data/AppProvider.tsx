@@ -1,5 +1,5 @@
+import { Page } from '@framework/contentful/content/page';
 import { createContext, useContext } from 'react'
-import Page from '../defs/page';
 
 export interface IAppContext {
     pages?: Page[],

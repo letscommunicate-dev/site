@@ -4,13 +4,12 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head'
 import Script from 'next/script';
 
-import { AppProvider } from '../components/AppProvider';
-import Footer from '../components/footer';
-import Header from '../components/header';
-import { getPagesForMenu } from '../contentful/page';
-import { Locale } from '../defs/i18n';
+import { getPagesForMenu, Page } from '@framework/contentful/content/page';
+import { AppProvider } from '@framework/data/AppProvider';
 
-import Page from '../defs/page';
+import Footer from '../components/footer/footer';
+import Header from '../components/header/header';
+import { Locale } from '../defs/i18n';
 
 import '../styles/globals.css'
 import styles from '../styles/page.module.css';

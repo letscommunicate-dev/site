@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { Router, useRouter } from 'next/router';
-import Page from '../defs/page';
+import { useAppContext } from '@framework/data/AppProvider';
 
-import styles from '../styles/components/menu.module.css';
-import { useAppContext } from './AppProvider';
+import styles from './menu.module.css';
 
 const Menu = () => {
     const router = useRouter();

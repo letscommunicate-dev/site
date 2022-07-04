@@ -2,7 +2,7 @@ import { documentToReactComponents, Options } from '@contentful/rich-text-react-
 import { BLOCKS, Document } from "@contentful/rich-text-types";
 import Image from 'next/image';
 
-import styles from '../../styles/components/richtext.module.css';
+import styles from './richtext.module.css';
 
 interface Props {
     links: {

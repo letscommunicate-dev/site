@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import LocaleSwitch from './locale-switch';
-import Container from './container';
-import Menu from './menu';
-import Page from '../defs/page';
+import LocaleSwitch from '../locale-switch/locale-switch';
+import Container from '../container/container';
+import Menu from '../menu/menu';
 
-import styles from '../styles/components/header.module.css';
-import { useAppContext } from './AppProvider';
+import styles from './header.module.css';
 
 const Header = () => {
     const [open, setOpen] = useState(false);
     const router = useRouter();
-    const { pages } = useAppContext();
 
     const onClick = () => {
         setOpen(!open);

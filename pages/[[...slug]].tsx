@@ -1,13 +1,12 @@
 import { GetStaticPathsContext, GetStaticPropsContext, NextPage } from 'next';
+import { getAllPages, getPage, Page } from '@framework/contentful/content/page';
 
-import { getAllPages, getPage } from '../contentful/page';
 import { Locale } from '../defs/i18n';
-import Page from '../defs/page';
-import Contents from '../components/contents';
-import Intro from '../components/intro';
+import Contents from '../components/contents/contents';
+import Intro from '../components/intro/intro';
 
 import styles from '../styles/page.module.css';
-import Container from '../components/container';
+import Container from '../components/container/container';
 import { useRouter } from 'next/router';
 
 

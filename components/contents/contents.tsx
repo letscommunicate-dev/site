@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import { Locale } from "../defs/i18n";
-import Form from "./content/form";
-import RichtextContent from "./content/richtext";
-import ServicesContent from "./content/services";
+import { Locale } from "../../defs/i18n";
+import Form from "./form/form";
+import RichtextContent from "./richtext/richtext";
+import ServicesContent from "./services/services";
 
 interface Props {
     contents: any[],

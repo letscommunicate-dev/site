@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Container from '../components/container';
+import Container from '../components/container/container';
 
 import styles from '../styles/page.module.css';
 

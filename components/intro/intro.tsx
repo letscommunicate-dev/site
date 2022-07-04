@@ -1,7 +1,7 @@
-import { Locale } from "../defs/i18n";
-import dictionary from "../contentful/dictionary";
+import { Locale } from "../../defs/i18n";
+import dictionary from "../../contentful/dictionary";
 
-import styles from '../styles/components/intro.module.css';
+import styles from './intro.module.css';
 
 interface Props {
     locale: Locale,

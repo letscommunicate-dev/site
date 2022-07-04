@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import styles from '../styles/components/container.module.css';
+import styles from './container.module.css';
 
 interface Props {
     children: any,

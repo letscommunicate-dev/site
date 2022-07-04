@@ -1,8 +1,9 @@
 import Link from "next/link";
-import Container from "./container";
-
-import styles from '../styles/components/footer.module.css';
 import Image from "next/image";
+
+import Container from "../container/container";
+
+import styles from './footer.module.css';
 
 const Footer = () =>
     <Container>

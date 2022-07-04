@@ -1,9 +1,9 @@
-import { Formik, Field, Form as FormikForm, FormikHelpers } from "formik";
-import FieldType from "../../defs/field";
-import dictionary from "../../contentful/dictionary";
-import { Locale } from "../../defs/i18n";
+import { Formik, Field as FormikField, Form as FormikForm, FormikHelpers } from "formik";
+import FieldType from "../../../defs/field";
+import dictionary from "../../../contentful/dictionary";
+import { Locale } from "../../../defs/i18n";
 
-import styles from '../../styles/components/form.module.css';
+import styles from './form.module.css';
 
 interface Props {
     fields: Array<FieldType>,
@@ -53,7 +53,7 @@ function Form({ action, method, fields, locale, successMessage, errorMessage }: 
                     <fieldset className={styles.fieldset} key={field.name + i}>
                         {field.label && <label htmlFor={field.name}>{field.label}</label>}
 
-                        <Field
+                        <FormikField
                             name={field.name}
                             placeholder={field.placeholder}
                             as={field.as}

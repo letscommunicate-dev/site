@@ -1,6 +1,6 @@
-import Service from "../../defs/service";
+import Service from "../../../defs/service";
 
-import styles from '../../styles/components/services.module.css';
+import styles from './services.module.css';
 
 interface Props {
     items: [Service],

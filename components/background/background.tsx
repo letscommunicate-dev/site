@@ -2,7 +2,7 @@ import { createRef, RefObject, useEffect } from "react";
 import p5 from 'p5';
 
 import sketch from "./sketch";
-import styles from '../../styles/components/background.module.css';
+import styles from './background.module.css';
 
 const Backgorund = () => {
     const myRef: RefObject<HTMLDivElement> = createRef();
